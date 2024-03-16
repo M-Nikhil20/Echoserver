@@ -20,63 +20,46 @@ Implementation using Python code
 Testing the server and client 
 
 ## PROGRAM:
-
-### Server code:
+## Echo Client.py
 ```python
 import socket
-
 HOST = "127.0.0.1"  # Standard loopback interface address (localhost)
 PORT = 65432  # Port to listen on (non-privileged ports are > 1023)
-
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    try:
-        s.bind((HOST, PORT))
-    except Exception as e:
-        print(f"Error binding to {HOST}:{PORT}: {e}")
-        exit()
-    
+    s.bind((HOST, PORT))
     s.listen()
-    print(f"Listening on {HOST}:{PORT}...")
-
-    try:
-        conn, addr = s.accept()
-    except Exception as e:
-        print(f"Error accepting connection: {e}")
-        exit()
-
+    conn, addr = s.accept()
     with conn:
         print(f"Connected by {addr}")
         while True:
-            try:
-                data = conn.recv(1024)
-                if not data:
-                    break
-                conn.sendall(data)
-            except Exception as e:
-                print(f"Error receiving/sending data: {e}")
-                exit()
-
-
+            data = conn.recv(1024)
+            if not data:
+                break
+            conn.sendall(data)
 ```
-### Client Code:
+## Echo Server.py
 ```python
 import socket
-HOST = "127.0.0.1"  # The server's hostname or IP address
-PORT = 65432  # The port used by the server
+HOST = "127.0.0.1"  # Standard loopback interface address (localhost)
+PORT = 65432  # Port to listen on (non-privileged ports are > 1023)
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.connect((HOST, PORT))
-    s.sendall(b"Hello, world")
-    data = s.recv(1024)
-
-print(f"Received {data!r}")
+    s.bind((HOST, PORT))
+    s.listen()
+    conn, addr = s.accept()
+    with conn:
+        print(f"Connected by {addr}")
+        while True:
+            data = conn.recv(1024)
+            if not data:
+                break
+            conn.sendall(data)
 ```
-
 ## OUTPUT:
-### Server side:
-![image](https://user-images.githubusercontent.com/94164665/230758905-6b305563-6c97-4644-9d02-061623b77159.png)
+## Client
+![Screenshot 2024-03-04 205633](https://github.com/Gokul0117/Echoserver/assets/121165938/396ff72f-93cd-412d-8c64-9a3bb52cb491)
 
-### Client side:
-![image](https://user-images.githubusercontent.com/94164665/230758640-ade6f2f9-3c15-48c0-9e5e-0b7fa8fa42c9.png)
+## Server
+![Screenshot 2024-03-04 205651](https://github.com/Gokul0117/Echoserver/assets/121165938/8a29e2a9-f9fc-446d-a6ce-704536d49507)
 
 ## RESULT:
-The program is executed successfully.
+The program is executed successfully
