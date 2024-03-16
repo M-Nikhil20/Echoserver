@@ -56,10 +56,10 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 ```
 ## OUTPUT:
 ## Client
-![Screenshot 2024-03-04 205633](https://github.com/Gokul0117/Echoserver/assets/121165938/396ff72f-93cd-412d-8c64-9a3bb52cb491)
+![image](https://github.com/M-Nikhil20/Echoserver/assets/118707852/606585b9-04d0-406e-aa86-aa7bd1eff57c)
 
 ## Server
-![Screenshot 2024-03-04 205651](https://github.com/Gokul0117/Echoserver/assets/121165938/8a29e2a9-f9fc-446d-a6ce-704536d49507)
+![image](https://github.com/M-Nikhil20/Echoserver/assets/118707852/392784b0-6d2d-49e8-bef5-4839914b0de2)
 
 ## RESULT:
 The program is executed successfully
